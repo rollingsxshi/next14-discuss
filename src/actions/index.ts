@@ -1,4 +1,4 @@
-'user server'
+'use server'
 
 import * as auth from '@/auth'
 

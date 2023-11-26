@@ -42,7 +42,7 @@ const TopicCreateForm = () => {
             />
 
             {formState.errors._form && (
-              <div className="rounded p-2 bg-red-200 border border-red-400 text-red-600">
+              <div className="rounded p-2 bg-red-200 border border-red-400 text-red-700 text-center">
                 {formState.errors._form?.join(", ")}
               </div>
             )}

@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { db } from "@/db";
 import paths from "@/paths";
+import { auth } from "@/auth";
 
 // zod schema
 const createPostSchema = z.object({
@@ -34,7 +35,10 @@ export async function createPost(
     return { errors: result.error.flatten().fieldErrors }
   }
 
-  
+  const session = await auth()
+  if (!session || !session.user) {
+    return { errors: { _form: ['You must be signed in to do this.'] } }
+  }
 
   return { errors: {} }
 }

@@ -30,7 +30,7 @@ const PostCreateForm = () => {
               labelPlacement="outside"
               placeholder="title"
               isInvalid={!!formState.errors.title}
-              errorMessage={formState.errors.title?.join(', ')}
+              errorMessage={formState.errors.title?.join(", ")}
             />
             <Textarea
               name="content"
@@ -38,8 +38,14 @@ const PostCreateForm = () => {
               labelPlacement="outside"
               placeholder="Content"
               isInvalid={!!formState.errors.content}
-              errorMessage={formState.errors.content?.join(', ')}
+              errorMessage={formState.errors.content?.join(", ")}
             />
+
+            {formState.errors._form && (
+              <div className="rounded p-2 bg-red-200 border border-red-400 text-red-700 text-center">
+                {formState.errors._form.join(", ")}
+              </div>
+            )}
 
             <FormButton>Create Post</FormButton>
           </div>

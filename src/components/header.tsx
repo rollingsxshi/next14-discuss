@@ -6,6 +6,7 @@ import {
 } from "@nextui-org/react";
 import Link from "next/link";
 import HeaderAuth from "./header-auth";
+import { ThemeSwitcher } from "./theme-switcher";
 
 const Header = () => {
 
@@ -19,6 +20,9 @@ const Header = () => {
 
       <NavbarContent justify="center">
         <Input />
+      </NavbarContent>
+      <NavbarContent>
+        <ThemeSwitcher />
       </NavbarContent>
       <NavbarContent justify="end">
         <HeaderAuth />

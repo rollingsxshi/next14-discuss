@@ -1,15 +1,11 @@
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  Input,
-} from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent } from "@nextui-org/react";
 import Link from "next/link";
 import HeaderAuth from "./header-auth";
 import { ThemeSwitcher } from "./theme-switcher";
+import SearchInput from "./search-input";
+import { Suspense } from "react";
 
 const Header = () => {
-
   return (
     <Navbar className="shadow mb-6">
       <NavbarBrand>
@@ -19,7 +15,9 @@ const Header = () => {
       </NavbarBrand>
 
       <NavbarContent justify="center">
-        <Input />
+        <Suspense>
+          <SearchInput />
+        </Suspense>
       </NavbarContent>
       <NavbarContent>
         <ThemeSwitcher />

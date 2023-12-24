@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Reddit clone
 
-## Getting Started
+## Prisma
+- `npm i prisma`
+- `npx prisma init --datasource-provider sqlite`
+- after creating model in schema.prisma, run `npx prisma migrate dev`
 
-First, run the development server:
+## Creating records
+- create prisma client to access db
+- create form in SnippetCreatePage
+- define Server Action, function called when form is submitted
+- in Server Action, validate users input then create new snippet
+- redirect user to Home Page, which lists all snippets
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# Notes
+## Server actions
+- no.1 way to change data in a next app
+- super close integration with HTML forms
+- functions that will be called with values a user entered into a form
+- cannot be defined in Client Components
+- to use server actions in Client Components, create actions folder and put .ts files there, import
+  in Client Component from actions folder
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Fetching data
+- create server component (without 'use client' at the top)
+- mark component as async
+- make http request or directly access a db to get data
+- render data directly, or pass it to a child component
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Client vs Server component
+### Client:
+- essentially same React components that you are already used to
+- created by adding 'use client' at the top of file
+- can use hooks, event handlers etc
+- cannot directly show a Server Component (there is 1 exception)
+### Server:
+- by default, all components are server components in Next
+- bends rules of traditional components abit
+- usually want to use this for better performance + UX
+- can use async/await & don't need useState or useEffect for data fetching
+- limitations: cannot use any kind of hooks, cannot assign any event handlers
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Dynamic paths
+- use [] as folder name
+- note that param values are always string
